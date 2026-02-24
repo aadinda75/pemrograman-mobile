@@ -1,0 +1,18 @@
+Soal 2 Mengapa sangat penting untuk memahami bahasa pemrograman Dart sebelum kita menggunakan framework Flutter ? Jelaskan!
+Sebelum menggunakan Flutter, penting untuk memahami bahasa pemrograman Dart terlebih dahulu karena Dart digunakan untuk menulis logika program, membuat fungsi, serta mengelola kondisi dan perulangan. Jika langsung mempelajari Flutter tanpa memahami dasar Dart, akan kebingungan saat menemukan konsep seperti function, OOP, dan struktur kode lainnya.
+
+Sebaliknya, dengan memahami Dart lebih dulu, proses belajar Flutter menjadi lebih mudah karena dapat langsung fokus pada cara kerja framework, seperti bagaimana widget bekerja, bagaimana state dikelola, dan bagaimana struktur aplikasi dibangun. Secara logis, menguasai bahasanya terlebih dahulu membuat pembelajaran lebih terarah, lebih efisien, serta meningkatkan produktivitas dalam pengembangan aplikasi Flutter.
+
+Soal 3 Rangkumlah materi dari codelab ini menjadi poin-poin penting yang dapat Anda gunakan untuk membantu proses pengembangan aplikasi mobile menggunakan framework Flutter.
+Rangkuman Poin Penting Dart untuk Flutter
+
+Dart diluncurkan tahun 2011, awalnya untuk menggantikan JavaScript, lalu beralih fokus ke mobile development bersama Flutter sejak Dart 2.0 (2018). Dipilih Flutter karena kuat, fleksibel, dan mendukung lintas platform.
+Fitur unggulan Dart meliputi productive tooling, garbage collection, type annotations opsional, statically typed, dan portability (bisa dikompilasi ke JavaScript, ARM, dan x86).
+Dart mendukung dua mode kompilasi: JIT (Just-In-Time) untuk development yang mendukung hot reload & debugging, dan AOT (Ahead-Of-Time) untuk produksi dengan performa lebih tinggi.
+Hot reload adalah fitur andalan Flutter berbasis JIT Dart yang memungkinkan perubahan kode langsung terlihat tanpa restart penuh, mempercepat proses pengembangan.
+Dart berbasis OOP dan mendukung encapsulation, inheritance, composition, abstraction, dan polymorphism. Semua tipe data adalah objek dari sebuah class, tidak ada tipe primitif seperti Java.
+Dart menyediakan berbagai operator: arithmetic (+, -, *, /, ~/, %), increment/decrement (++, --), equality & relational (==, !=, >, <, >=, <=), dan logical (!, ||, &&).
+
+Soal 4 Buatlah penjelasan dan contoh eksekusi kode tentang perbedaan Null Safety dan Late variabel!
+Null Safety adalah fitur Dart yang memastikan sebuah variabel tidak bisa bernilai null secara default, sehingga mencegah null reference error saat runtime. Jika ingin mengizinkan null, harus ditandai eksplisit dengan tanda ?. 
+Late Variable dipakai ketika belum bisa menentukan nilai variabel di awal program, namun variabel tersebut akan mendapat nilai sebelum dipanggil atau digunakan.Sebelum variabel itu dipanggil atau digunakan, wajib sudah diisi nilainya terlebih dahulu. Kalau dipanggil sebelum diisi, maka akan terjadi error.
