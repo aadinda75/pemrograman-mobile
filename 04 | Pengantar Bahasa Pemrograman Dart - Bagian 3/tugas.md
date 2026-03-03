@@ -21,9 +21,7 @@ function (buah) => print(buah)
 tidak punya nama dan bisa langsung dipakai
 
 ### 5. Apa perbedaan Lexical scope dan Lexical closures?
-Lexical scope artinya variabel hanya bisa diakses di dalam blok tempat ia dibuat. 
-Lexical closure artinya function bisa mengingat variabel dari luar dirinya meskipun blok tersebut sudah selesai dijalankan. 
-Singkatnya, scope soal batas akses, closure soal kemampuan mengingat.
+Lexical scope membatasi di mana sebuah variabel bisa diakses hanya berlaku di dalam blok tempat variabel itu ditulis. Sementara lexical closure memungkinkan sebuah function tetap bisa menggunakan variabel dari scope luarnya, bahkan setelah scope itu sudah tidak aktif. Jadi kalau scope mengatur batas wilayah sebuah variabel, closure memungkinkan function untuk membawa pulang variabel dari wilayah tersebut.
 
 ### 6. Bagaimana cara membuat return multiple value di Functions?
 Menggunakan Records di Dart 3. Function mengembalikan beberapa nilai sekaligus dalam satu tipe record, lalu nilainya bisa langsung diurai. 
