@@ -1,17 +1,5 @@
-# belanja
+## Praktikum 5: Membangun Navigasi di Flutter
+Membuat aplikasi belanja dengan 2 halaman yang terhubung menggunakan sistem navigasi Flutter. Strukturnya dibagi menjadi 3 folder yaitu models untuk data, pages untuk halaman, dan widgets untuk komponen. Konsep utama yang dipelajari adalah Route yaitu objek yang merepresentasikan sebuah halaman, dan Navigator yang mengatur perpindahan antar halaman menggunakan sistem stack (push/pop). Halaman HomePage menampilkan daftar item menggunakan ListView.builder dengan widget Card, dan ketika item diklik menggunakan InkWell maka aplikasi akan berpindah ke ItemPage menggunakan Navigator.pushNamed. Data antar halaman dikirim menggunakan arguments dan diterima menggunakan ModalRoute.of(context)!.settings.arguments.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tugas Praktikum 2
+Mengembangkan aplikasi belanja dengan beberapa peningkatan. Pertama, mengganti sistem navigasi dari Navigator.pushNamed ke go_router yang lebih modern, di mana data dikirim lewat extra dan diterima langsung sebagai parameter constructor class sehingga lebih bersih dan type-safe. Kedua, tampilan diubah dari ListView menjadi GridView agar menyerupai aplikasi marketplace, dengan menampilkan foto produk, stok, dan rating di setiap card. Ketiga, ditambahkan Hero widget untuk animasi transisi gambar saat berpindah halaman. Keempat, ditambahkan footer berisi nama dan NIM di setiap halaman sebagai identitas hasil pekerjaan.
