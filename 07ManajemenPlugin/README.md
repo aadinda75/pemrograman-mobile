@@ -1,17 +1,8 @@
-# praktikum7
+## TUGAS PRAKTIKUM
+Langkah 2 pada praktikum ini bertujuan untuk menambahkan plugin auto_size_text ke dalam project Flutter menggunakan perintah flutter pub add. Plugin ini digunakan agar teks pada aplikasi dapat menyesuaikan ukuran secara otomatis dengan ruang yang tersedia. Dengan begitu, teks tidak akan keluar dari batas widget (overflow) dan tetap terlihat rapi meskipun ditempatkan dalam container dengan ukuran terbatas.
 
-A new Flutter project.
+Selanjutnya, pada langkah 5 dilakukan penambahan variabel text sebagai parameter pada constructor di dalam widget RedTextWidget. Hal ini bertujuan agar widget menjadi lebih fleksibel dan dapat digunakan kembali (reusable) dengan isi teks yang berbeda-beda. Tanpa parameter ini, teks akan bersifat statis (hardcoded) sehingga kurang efisien jika ingin digunakan di banyak tempat dengan konten berbeda.
 
-## Getting Started
+Pada langkah 6, ditambahkan dua widget yaitu RedTextWidget dan Text biasa ke dalam tampilan. Keduanya memiliki fungsi yang mirip, yaitu menampilkan teks, tetapi dengan perilaku yang berbeda. RedTextWidget memanfaatkan AutoSizeText sehingga ukuran teks dapat menyesuaikan dengan ruang yang tersedia, sedangkan widget Text biasa tidak memiliki kemampuan tersebut. Akibatnya, jika ruang terlalu sempit, teks pada Text bisa terpotong atau overflow, sementara pada RedTextWidget tetap menyesuaikan agar tetap terbaca.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Parameter yang digunakan dalam AutoSizeText juga memiliki peran penting dalam mengatur tampilan teks. Parameter text digunakan untuk menentukan isi teks yang ditampilkan, style untuk mengatur tampilan seperti warna dan ukuran font, maxLines untuk membatasi jumlah baris teks, serta overflow untuk menentukan bagaimana teks ditampilkan jika melebihi batas, misalnya dengan tanda titik tiga (ellipsis). Dengan kombinasi parameter tersebut, AutoSizeText mampu menampilkan teks secara lebih adaptif dan responsif dibandingkan widget Text biasa.
