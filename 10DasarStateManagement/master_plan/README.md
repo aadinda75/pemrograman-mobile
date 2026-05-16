@@ -66,3 +66,39 @@ Kedua getter tersebut ditempatkan pada file `plan.dart` karena termasuk bagian d
 Pada praktikum 2, aplikasi telah menggunakan `InheritedNotifier` sebagai state management. Hasil implementasinya ditunjukkan dengan adanya footer seperti `"1 out of 2 tasks"` pada bagian bawah layar yang dapat berubah secara otomatis ketika task ditambahkan atau checkbox dicentang.
 
 Perubahan tampilan tersebut terjadi tanpa penggunaan `setState()`, melainkan melalui `ValueNotifier` yang dipantau oleh `ValueListenableBuilder`. Ketika tombol tambah ditekan atau status task diubah, nilai pada `planNotifier.value` akan diperbarui dan seluruh UI yang menggunakan data tersebut akan otomatis ikut berubah.
+
+# TUGAS PRAKTIKUM 3
+
+## 1. Dokumentasi GIF hasil akhir praktikum
+
+<p align="center">
+  <img src="assets/praktikum3.1.png" width="350">
+  <img src="assets/praktikum3.2.png" width="350">
+</p>
+
+Aplikasi `master_plan` telah berhasil dibuat dengan fitur yang lengkap, seperti membuat beberapa plan sekaligus, membuka setiap plan untuk menambah dan mencentang task, serta menampilkan progress masing-masing plan pada halaman utama.
+
+Selama proses pengerjaan ditemukan beberapa kendala. Kendala pertama terjadi ketika menambahkan plan kedua, di mana plan pertama yang sudah dibuat tiba-tiba hilang. Hal tersebut disebabkan karena method `_buildMasterPlans()` mengambil data langsung dari `planNotifier.value` tanpa menggunakan `ValueListenableBuilder`, sehingga widget tidak melakukan rebuild saat data berubah. Solusinya adalah membungkus isi method tersebut menggunakan `ValueListenableBuilder` agar daftar plan dapat diperbarui secara otomatis.
+
+Kendala kedua terjadi pada checkbox task yang tidak dapat dicentang. Penyebabnya adalah `_buildTaskTile` menggunakan getter `Plan get plan => widget.plan` yang masih merujuk pada data lama sehingga tidak sinkron dengan data terbaru. Solusinya dilakukan dengan menghapus getter tersebut dan mengganti seluruh referensi menjadi `widget.plan.name`, serta mengambil data task langsung dari `planNotifier.value[planIndex].tasks` agar selalu menggunakan data yang terbaru.
+
+---
+
+## 2. Jelaskan maksud dari gambar diagram tersebut!
+
+Diagram tersebut menjelaskan struktur widget tree aplikasi sebelum dan sesudah `Navigator.push()` dijalankan.
+
+Pada bagian kiri diagram ditampilkan struktur aplikasi sebelum perpindahan halaman, yaitu halaman `PlanCreatorScreen`. Struktur dimulai dari `MaterialApp` sebagai root widget, kemudian `PlanProvider` yang membungkus aplikasi agar data list `Plan` dapat diakses oleh seluruh widget di bawahnya. Setelah itu terdapat `PlanCreatorScreen` yang berisi `Column` dengan dua komponen utama, yaitu `TextField` untuk menambahkan plan baru dan `Expanded` yang di dalamnya terdapat `ListView` untuk menampilkan daftar plan yang telah dibuat.
+
+Pada bagian kanan diagram ditampilkan struktur setelah pengguna memilih salah satu plan. Ketika `Navigator.push()` dijalankan, aplikasi berpindah ke halaman `PlanScreen`. Halaman ini terdiri dari `Scaffold` yang berisi `Column`, kemudian `Expanded` dengan `ListView` untuk menampilkan daftar task, serta `SafeArea` yang menampilkan informasi progress task seperti `"1 out of 3 tasks"`.
+
+Diagram tersebut juga menunjukkan bahwa `PlanProvider` hanya muncul pada struktur sebelah kiri, tetapi data tetap dapat diakses pada `PlanScreen`. Hal ini terjadi karena `PlanProvider` berada di atas `MaterialApp` dalam widget tree sehingga tetap tersedia meskipun halaman berpindah melalui proses navigasi.
+
+---
+
+## 3. Capture hasil Langkah 14 berupa GIF dan jelaskan apa yang telah dibuat!
+Pada langkah 14 telah berhasil dibuat keseluruhan aplikasi `master_plan` dengan fitur multiple plan. Pada halaman utama `PlanCreatorScreen` terdapat `TextField` di bagian atas yang digunakan untuk menambahkan plan baru dengan cara mengetik nama plan lalu menekan tombol enter.
+
+Di bawah bagian input terdapat daftar seluruh plan yang sudah dibuat beserta subtitle progress task, misalnya `"0 out of 0 tasks"`. Jika belum terdapat plan, aplikasi akan menampilkan ikon catatan berwarna abu-abu disertai teks `"Anda belum memiliki rencana apapun."`.
+
+Ketika salah satu plan dipilih, aplikasi akan berpindah ke halaman `PlanScreen` yang menampilkan daftar task dari plan tersebut. Pada halaman ini tersedia tombol `+` untuk menambahkan task baru, checkbox untuk menandai task yang telah selesai, serta footer pada bagian bawah layar yang menampilkan progress penyelesaian task.
