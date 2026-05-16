@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'filter_carousel.dart';
 
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
@@ -20,12 +21,10 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   void initState() {
     super.initState();
-
     _controller = CameraController(
       widget.camera,
       ResolutionPreset.medium,
     );
-
     _initializeControllerFuture = _controller.initialize();
   }
 
@@ -45,9 +44,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           if (snapshot.connectionState == ConnectionState.done) {
             return CameraPreview(_controller);
           } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),
@@ -56,6 +53,20 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           try {
             await _initializeControllerFuture;
             final image = await _controller.takePicture();
+
+            // baca foto sebagai bytes agar support web
+            final imageBytes = await image.readAsBytes();
+
+            if (!mounted) return;
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PhotoFilterCarousel(
+                  imageBytes: imageBytes,
+                ),
+              ),
+            );
           } catch (e) {
             print(e);
           }
